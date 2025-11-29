@@ -3,6 +3,7 @@ using UnityEngine;
 public class ZombieHealth : MonoBehaviour
 {
     [SerializeField] float maxHealth;
+    [SerializeField] int killScore;
     private float currentHealth;
 
     private void Start()
@@ -22,6 +23,7 @@ public class ZombieHealth : MonoBehaviour
 
     private void Die()
     {
+        GameManager.instance.AddScore(killScore);
         // TODO: die sound
         Destroy(gameObject);
     }

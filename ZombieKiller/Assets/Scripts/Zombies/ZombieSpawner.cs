@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using UnityEngine;
 
 public class ZombieSpawner : MonoBehaviour
@@ -5,7 +6,8 @@ public class ZombieSpawner : MonoBehaviour
     [SerializeField] Transform[] spawnPoints;
     [SerializeField] int spawnNumber;
     [SerializeField] float spawnInterval;
-    [SerializeField] GameObject zombiePrefab;
+    [SerializeField] GameObject fatherZombiePrefab;
+    [SerializeField] GameObject sonZombiePrefab;
 
     private float timer;
 
@@ -34,7 +36,18 @@ public class ZombieSpawner : MonoBehaviour
             do {
                 index = randomIndex(spawnPoints.Length);
             } while (index == lastIndex);
-            Instantiate(zombiePrefab, spawnPoints[index]);
+            lastIndex = index;
+            Instantiate(fatherZombiePrefab, spawnPoints[index]);
         }
+
+        if(spawnNumber % 2 == 0)
+        {
+            do {
+                index = randomIndex(spawnPoints.Length);
+            } while (index == lastIndex);
+            Instantiate(sonZombiePrefab, spawnPoints[index]);
+        }
+        
+        spawnNumber++;
     }
 }

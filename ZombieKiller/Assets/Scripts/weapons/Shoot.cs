@@ -48,6 +48,13 @@ public class Shoot : MonoBehaviour
             if(zombieHealth != null)
             {
                 zombieHealth.TakeDamage(weaponData.damage);
+            } else
+            {
+                ZombieHeadshot headshot = hit.transform.GetComponent<ZombieHeadshot>();
+                if(headshot != null)
+                {
+                    headshot.TakeHeadshotDamage(weaponData.damage);
+                }
             }
         }
     }
