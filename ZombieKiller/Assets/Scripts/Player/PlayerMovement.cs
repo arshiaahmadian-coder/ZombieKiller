@@ -38,7 +38,7 @@ public class PlayerMovement : MonoBehaviour
         myInput();
         SpeedControl();
 
-        // handle drag
+        // handle Damping
         if(grounded) rb.linearDamping = groundDamping;
         else rb.linearDamping = 0;
     }
