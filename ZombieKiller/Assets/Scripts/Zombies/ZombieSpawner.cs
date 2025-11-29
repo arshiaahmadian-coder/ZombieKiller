@@ -11,6 +11,7 @@ public class ZombieSpawner : MonoBehaviour
     [SerializeField] TMP_Text waveText;
     [SerializeField] float changeToNightInterval;
     [SerializeField] float spawnInterval;
+    [SerializeField] GameObject messageText;
 
     private bool isDay = true;
     private bool canSpawn = true;
@@ -116,6 +117,7 @@ public class ZombieSpawner : MonoBehaviour
 
         if(aliveZombies.Length - 1 <= 0 && canSpawn && changeToNightState == true)
         {
+            messageText.SetActive(true);
             Invoke(nameof(ChangeToNight), changeToNightInterval);
         }
     }
@@ -124,6 +126,7 @@ public class ZombieSpawner : MonoBehaviour
     {
         DayNightManager.instance.ChangeToNight();
         changeToNightState = false;
+        messageText.SetActive(false);
         FindAllAliveZombies();
     }
 }

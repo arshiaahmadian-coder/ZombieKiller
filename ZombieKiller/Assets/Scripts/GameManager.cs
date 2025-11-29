@@ -4,21 +4,27 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] TMP_Text scoreText;
-    int score = 0;
+    int coins = 0;
     public static GameManager instance;
     private void Awake()
     {
         instance = this;
     }
 
-    public void AddScore(int scoreAmount)
+    public void AddCoin(int scoreAmount)
     {
-        score += scoreAmount;
-        scoreText.text = "Coin: " + score.ToString();
+        coins += scoreAmount;
+        scoreText.text = "Coin: " + coins.ToString();
     }
 
-    public void SaveScoreIfIsNewRecord()
+    public void SpendCoin(int spendAmount)
     {
-        // TODO
+        coins -= spendAmount;
+        scoreText.text = "Coin: " + coins.ToString();
+    }
+
+    public bool CanBuy(int price)
+    {
+        return coins - price >= 0;
     }
 }

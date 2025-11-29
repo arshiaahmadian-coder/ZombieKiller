@@ -2,16 +2,17 @@ using UnityEngine;
 
 public class Shoot : MonoBehaviour
 {
-    [SerializeField] WeaponData weaponData;
+    private WeaponData weaponData;
     [SerializeField] GameObject playerCam;
 
     private float timer;
     private bool canShoot;
     private Animator animator;
+    private GameObject prevGunObject;
 
     private void Start()
     {
-        InstantiateWeapon();
+        UpgradeGun();
         timer = weaponData.shootInterval;
     }
 
@@ -54,13 +55,31 @@ public class Shoot : MonoBehaviour
                     headshot.TakeHeadshotDamage(weaponData.damage);
                 }
             }
+
+            UpgradeSystem upgrade = hit.transform.GetComponent<UpgradeSystem>();
+            if(upgrade != null)
+            {
+                upgrade.UpgradeCurrentGun();
+            }
         }
     }
 
     private void InstantiateWeapon()
     {
+        if(prevGunObject)
+        {
+            Destroy(prevGunObject);
+        }
         GameObject weaponObj = Instantiate(weaponData.weaponPrefab);
         weaponObj.transform.SetParent(playerCam.transform);
         animator = weaponObj.GetComponent<Animator>();
+        prevGunObject = weaponObj;
+    }
+
+    public void UpgradeGun()
+    {
+        weaponData = FindFirstObjectByType<UpgradeSystem>().currentGun;
+        InstantiateWeapon();
+        print(weaponData.name);
     }
 }
