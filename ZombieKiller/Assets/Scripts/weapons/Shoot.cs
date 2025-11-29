@@ -1,14 +1,19 @@
+using TMPro;
 using UnityEngine;
 
 public class Shoot : MonoBehaviour
 {
     private WeaponData weaponData;
     [SerializeField] GameObject playerCam;
+    [SerializeField] TMP_Text magInfoText;
 
     private float timer;
     private bool canShoot;
+    private bool isReloading;
     private Animator animator;
     private GameObject prevGunObject;
+    private int magCapacity;
+    private int currentMagCapacity;
 
     private void Start()
     {
@@ -26,12 +31,29 @@ public class Shoot : MonoBehaviour
         }
 
         // check can shoot
-        if(Input.GetMouseButton(0) && canShoot) ShootBulet();
+        if(Input.GetMouseButton(0) && canShoot && !isReloading) ShootBulet();
         // reset timer if released auto shoot
+    }
+
+    private void Reload()
+    {
+        isReloading = false;
+        currentMagCapacity = magCapacity;
+        magInfoText.text = currentMagCapacity.ToString();
     }
 
     private void ShootBulet()
     {
+        currentMagCapacity--;
+        magInfoText.text = currentMagCapacity.ToString();
+        if(currentMagCapacity <= 0)
+        {
+            // reload
+            isReloading = true;
+            magInfoText.text = "reloading...";
+            Invoke(nameof(Reload), weaponData.reloadTime);
+        }
+
         canShoot = false;
         animator.SetTrigger("Shoot");
         timer = weaponData.shootInterval;
@@ -79,7 +101,9 @@ public class Shoot : MonoBehaviour
     public void UpgradeGun()
     {
         weaponData = FindFirstObjectByType<UpgradeSystem>().currentGun;
+        magCapacity = weaponData.magCapacity;
+        currentMagCapacity = magCapacity;
+        magInfoText.text = currentMagCapacity.ToString();
         InstantiateWeapon();
-        print(weaponData.name);
     }
 }
