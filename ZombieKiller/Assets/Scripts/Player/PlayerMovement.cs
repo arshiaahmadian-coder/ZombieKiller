@@ -16,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float playerHeight;
     [SerializeField] LayerMask GroundLayer;
     bool grounded;
+    private bool canMove = true;
 
     [Header("Key Binds")]
     [SerializeField] KeyCode jumpKey = KeyCode.Space;
@@ -35,12 +36,17 @@ public class PlayerMovement : MonoBehaviour
     {
         // ground check
         grounded = Physics.Raycast(transform.position, Vector3.down, playerHeight * 0.5f + 0.2f, GroundLayer);
-        myInput();
+        if (canMove) myInput();
         SpeedControl();
 
         // handle Damping
         if(grounded) rb.linearDamping = groundDamping;
         else rb.linearDamping = 0;
+    }
+
+    public void DisableMovement()
+    {
+        canMove = false;
     }
 
     private void FixedUpdate()

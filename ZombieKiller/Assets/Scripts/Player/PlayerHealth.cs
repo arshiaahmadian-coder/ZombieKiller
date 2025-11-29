@@ -27,7 +27,7 @@ public class PlayerHealth : MonoBehaviour
         if(currentHealth <= 0f)
         {
             // TODO: Save Kill record, show menu;
-            print("GameOver");
+            GameManager.instance.GameOver();
         }
     }
 }
