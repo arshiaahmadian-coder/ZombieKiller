@@ -29,7 +29,6 @@ public class Shoot : MonoBehaviour
         // check can shoot
         if(Input.GetMouseButton(0) && canShoot) ShootBulet();
         // reset timer if released auto shoot
-        if(Input.GetMouseButtonUp(0)) timer = weaponData.shootInterval;
     }
 
     private void ShootBulet()
