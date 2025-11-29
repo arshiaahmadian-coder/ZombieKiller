@@ -10,12 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9af74187c6c90e5418ff87dcd633610d, type: 3}
-  m_Name: Pistol
+  m_Name: Pistol (3)
   m_EditorClassIdentifier: 
-  weaponName: Pistol
-  shootInterval: 0.62
-  reloadTime: 2
-  magCapacity: 15
-  damage: 5
-  weaponPrefab: {fileID: 8937708461094575659, guid: 0d61571c240b1594f86968cc5c405891, type: 3}
+  weaponName: Pistol (3)
+  shootInterval: 0.5
+  reloadTime: 1.3
+  magCapacity: 25
+  damage: 10
+  weaponPrefab: {fileID: 6113660660162195484, guid: 7fa10c096d419da49991fdcb75332e71, type: 3}
   range: 100
+  price: 300

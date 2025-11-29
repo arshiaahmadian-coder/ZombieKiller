@@ -10,4 +10,6 @@ public class WeaponData : ScriptableObject
     public float damage;
     public GameObject weaponPrefab;
     public int range;
+
+    public int price;
 }

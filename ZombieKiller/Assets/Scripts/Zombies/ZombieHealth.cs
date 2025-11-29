@@ -24,6 +24,7 @@ public class ZombieHealth : MonoBehaviour
     private void Die()
     {
         GameManager.instance.AddScore(killScore);
+        FindFirstObjectByType<ZombieSpawner>().FindAllAliveZombies();
         // TODO: die sound
         Destroy(gameObject);
     }
