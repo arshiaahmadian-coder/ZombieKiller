@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Pistol
   m_EditorClassIdentifier: 
   weaponName: Pistol
-  shootInterval: 0.8
-  reloadTime: 3
-  magCapacity: 12
+  shootInterval: 0.62
+  reloadTime: 2
+  magCapacity: 15
   damage: 5
   weaponPrefab: {fileID: 8937708461094575659, guid: 0d61571c240b1594f86968cc5c405891, type: 3}
   range: 100

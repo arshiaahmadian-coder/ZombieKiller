@@ -1396,11 +1396,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2825594181067772469}
-  - component: {fileID: 8746304134456356885}
   - component: {fileID: 2621035600400056953}
   - component: {fileID: 8547976200360432304}
   - component: {fileID: 4128562468057526528}
   - component: {fileID: 4208789207646051736}
+  - component: {fileID: 4217122128118206610}
   m_Layer: 0
   m_Name: Zombie Father
   m_TagString: Untagged
@@ -1425,28 +1425,6 @@ Transform:
   - {fileID: 1489042819914267362}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &8746304134456356885
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7241680795891609644}
-  m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: b20a3c10714a6ac439af479e3273de65, type: 3}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 1
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 1
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!136 &2621035600400056953
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -1497,7 +1475,7 @@ NavMeshAgent:
   m_Acceleration: 8
   avoidancePriority: 50
   m_AngularSpeed: 300
-  m_StoppingDistance: 0.8
+  m_StoppingDistance: 2
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
@@ -1517,6 +1495,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d45ffdd72f7f5e44e847419e4549a295, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  AttackRange: 2
+  AttackDamage: 5
+  baseAttackTime: 4
+--- !u!95 &4217122128118206610
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7241680795891609644}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: b20a3c10714a6ac439af479e3273de65, type: 3}
+  m_Controller: {fileID: 9100000, guid: 9d838691a06ec8b4b87759203926668a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &7384127205066531591
 GameObject:
   m_ObjectHideFlags: 0
