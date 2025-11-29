@@ -19,4 +19,4 @@ MonoBehaviour:
   damage: 10
   weaponPrefab: {fileID: 6113660660162195484, guid: 7fa10c096d419da49991fdcb75332e71, type: 3}
   range: 100
-  price: 300
+  price: 50
