@@ -5,6 +5,11 @@ public class Shoot : MonoBehaviour
 {
     private WeaponData weaponData;
     [SerializeField] GameObject playerCam;
+    [SerializeField] GameObject hitVfx;
+    [SerializeField] GameObject bloodImpactVfx;
+    [SerializeField] GameObject bloodHeadShotVfx;
+    [SerializeField] GameObject bloodFallVfx;
+    // [SerializeField] ParticleSystem shootVfx;
     [SerializeField] TMP_Text magInfoText;
 
     private float timer;
@@ -51,6 +56,7 @@ public class Shoot : MonoBehaviour
             // reload
             isReloading = true;
             magInfoText.text = "reloading...";
+            // shootVfx.Play();
             Invoke(nameof(Reload), weaponData.reloadTime);
         }
 
@@ -66,15 +72,33 @@ public class Shoot : MonoBehaviour
         if (Physics.Raycast(rayOrigin, rayDirection, out hit, rayRange))
         {
             ZombieHealth zombieHealth = hit.transform.GetComponent<ZombieHealth>();
+
             if(zombieHealth != null)
             {
                 zombieHealth.TakeDamage(weaponData.damage);
+
+                GameObject effect = Instantiate(bloodImpactVfx, hit.point, 
+                    Quaternion.LookRotation(hit.normal));
+                Destroy(effect, 4f);
+
+                GameObject effectFall = Instantiate(bloodFallVfx, hit.point, 
+                    Quaternion.LookRotation(hit.normal));
+                effectFall.transform.SetParent(zombieHealth.transform);
             } else
             {
                 ZombieHeadshot headshot = hit.transform.GetComponent<ZombieHeadshot>();
                 if(headshot != null)
                 {
                     headshot.TakeHeadshotDamage(weaponData.damage);
+
+                    GameObject effect = Instantiate(bloodHeadShotVfx, hit.point, 
+                        Quaternion.LookRotation(hit.normal));
+                    Destroy(effect, 4f);
+                } else
+                {
+                    GameObject effect = Instantiate(hitVfx, hit.point, 
+                        Quaternion.LookRotation(hit.normal));
+                    Destroy(effect, 2f);
                 }
             }
 
