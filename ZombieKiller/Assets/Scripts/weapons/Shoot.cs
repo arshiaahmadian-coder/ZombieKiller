@@ -75,8 +75,6 @@ public class Shoot : MonoBehaviour
 
             if(zombieHealth != null)
             {
-                zombieHealth.TakeDamage(weaponData.damage);
-
                 GameObject effect = Instantiate(bloodImpactVfx, hit.point, 
                     Quaternion.LookRotation(hit.normal));
                 Destroy(effect, 4f);
@@ -84,12 +82,18 @@ public class Shoot : MonoBehaviour
                 GameObject effectFall = Instantiate(bloodFallVfx, hit.point, 
                     Quaternion.LookRotation(hit.normal));
                 effectFall.transform.SetParent(zombieHealth.transform);
+
+                zombieHealth.AddObjectToList(effectFall);
+
+                zombieHealth.TakeDamage(weaponData.damage, hit.point, 
+                (hit.point - (playerCam ? playerCam.transform.position : transform.position)).normalized);
             } else
             {
                 ZombieHeadshot headshot = hit.transform.GetComponent<ZombieHeadshot>();
                 if(headshot != null)
                 {
-                    headshot.TakeHeadshotDamage(weaponData.damage);
+                    headshot.TakeHeadshotDamage(weaponData.damage, hit.point, 
+                (hit.point - (playerCam ? playerCam.transform.position : transform.position)).normalized);
 
                     GameObject effect = Instantiate(bloodHeadShotVfx, hit.point, 
                         Quaternion.LookRotation(hit.normal));

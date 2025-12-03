@@ -54,4 +54,9 @@ public class ZombiePathFinding : MonoBehaviour
             PlayerHealth.instance.TakeDamage(AttackDamage);
         }
     }
+
+    public void StopMoving()
+    {
+        agent.isStopped = true;
+    }
 }

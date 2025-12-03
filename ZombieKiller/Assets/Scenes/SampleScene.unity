@@ -2264,7 +2264,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 805148116}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: CameraPos
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2519,7 +2519,7 @@ GameObject:
   - component: {fileID: 876265310}
   - component: {fileID: 876265311}
   - component: {fileID: 876265312}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -2841,7 +2841,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 946344798}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: Orientation
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5526,7 +5526,7 @@ GameObject:
   - component: {fileID: 1913332381}
   - component: {fileID: 1913332380}
   - component: {fileID: 1913332379}
-  m_Layer: 8
+  m_Layer: 3
   m_Name: PlayerObj
   m_TagString: Untagged
   m_Icon: {fileID: 0}
