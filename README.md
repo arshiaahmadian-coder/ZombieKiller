@@ -2,7 +2,7 @@
 
 ## About
 
-A game developed with Unity and C#.
+A 2D survival shooter developed with Unity, where players must survive against continuous waves of zombies while managing resources and upgrading their equipment. Defeating zombies rewards the player with currency that can be spent on weapon upgrades, increasing combat effectiveness against stronger enemy waves. As the game progresses, the difficulty gradually increases, forcing players to balance survival, accuracy, and upgrade decisions. The core gameplay loop focuses on wave-based combat, player progression, and long-term survival against an ever-growing zombie threat.
 
 ## Genre
 
